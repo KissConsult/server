@@ -84,6 +84,9 @@ SELECT @@GLOBAL.gtid_current_pos;
 #
 # Server restart
 #
+
+#--error 1
+#--exec $MYSQLD_LAST_CMD  --tc-heuristic-recover=BINLOG_TRUNCATE > $MYSQLTEST_VARDIR/log/mysqld.1.err 2>&1
 --append_file $MYSQLTEST_VARDIR/tmp/mysqld.1.expect
 restart: --tc-heuristic-recover=BINLOG_TRUNCATE
 EOF
