@@ -4513,8 +4513,7 @@ bool ha_connect::check_privileges(THD *thd, PTOS options, char *dbn, bool quick)
 				Switch_to_definer_security_ctx backup_ctx(thd, table->pos_in_table_list);
 #endif // VERSION_ID > 100200
         return check_global_access(thd, FILE_ACL);
-      }
-      else
+      }	else
         return check_global_access(thd, FILE_ACL);
     case TAB_ODBC:
 		case TAB_JDBC:
@@ -4530,7 +4529,7 @@ bool ha_connect::check_privileges(THD *thd, PTOS options, char *dbn, bool quick)
     case TAB_VIR:
 			// This is temporary until a solution is found
 			return false;
-    } // endswitch type
+  } // endswitch type
 
   my_printf_error(ER_UNKNOWN_ERROR, "check_privileges failed", MYF(0));
   return true;
